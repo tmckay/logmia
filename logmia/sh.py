@@ -8,5 +8,5 @@ class Sh:
     def __init__(self, stream=sys.stderr):
         self.stream = stream
 
-    def print(self, chars):
-        pass
+    def echo(self, chars):
+        print(chars, file=self.stream)
