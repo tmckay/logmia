@@ -10,3 +10,4 @@ Combining less common logging features into a single library.
  + Sticky log lines
  + Opinionated defaults
  + Handlers configured to do the right thing
+ + CLI vs. logfile awareness
