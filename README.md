@@ -1,5 +1,7 @@
 # logmia
 
+[![Build Status](https://travis-ci.com/tmckay/logmia.svg?branch=main)](https://travis-ci.com/tmckay/logmia)
+
 ## What
 
 Combining less common logging features into a single library.
