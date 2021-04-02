@@ -17,7 +17,9 @@ class Sh:
         # Print without a trailing newline
         print(chars, file=self.stream, end='', flush=True)
 
-    def _reset_line(self):
+    def reset_line(self):
         """Replaces current shell output with spaces, so that the line can be overwritten."""
         self._print('\r' + ' ' * self.last_line_width)
 
+    def newline(self):
+        print(file=self.stream, flush=True)

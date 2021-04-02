@@ -12,5 +12,5 @@ def test_basic_print():
 
 def test_reset_line():
     buf = io.StringIO()
-    Sh(stream=buf)._reset_line()
+    Sh(stream=buf).reset_line()
     assert buf.getvalue() == '\r'
