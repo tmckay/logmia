@@ -22,3 +22,9 @@ Combining less common logging features into a single library.
 
     logger.debug('...')
     logger.info('...')  # replaces previous debug line and is sticky
+
+## Developing
+
+### Run tests
+
+    $ make test
