@@ -8,3 +8,20 @@ def test_logger_debug():
     logger = LogmiaLogger(stream=buf)
     logger.debug('Something there is that doesn\'t love a wall')
     buf.getvalue() ==  'Something there is that doesn\'t love a wall\r'
+
+
+def test_logger_info():
+    buf = io.StringIO()
+    logger = LogmiaLogger(stream=buf)
+    logger.info('When the evening is spread out against the sky')
+    buf.getvalue() ==  'When the evening is spread out against the sky\n'
+
+
+def test_logger_debug_then_info():
+    buf = io.StringIO()
+    logger = LogmiaLogger(stream=buf)
+    logger.debug('Something there is that doesn\'t love a wall')
+    logger.info('When the evening is spread out against the sky')
+    buf.getvalue() ==  'Something there is that doesn\'t love a wall\rWhen the evening is spread out against the sky\n'
+
+
