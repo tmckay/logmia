@@ -17,11 +17,12 @@ def test_logger_info():
     buf.getvalue() ==  'When the evening is spread out against the sky\n'
 
 
-def test_logger_debug_then_info():
-    buf = io.StringIO()
-    logger = LogmiaLogger(stream=buf)
-    logger.debug('Something there is that doesn\'t love a wall')
-    logger.info('When the evening is spread out against the sky')
-    buf.getvalue() ==  'Something there is that doesn\'t love a wall\rWhen the evening is spread out against the sky\n'
+def test_logger_debug_then_other():
+    for level in ('info', 'warn', 'error', 'critical'):
+        buf = io.StringIO()
+        logger = LogmiaLogger(stream=buf)
+        logger.debug('Something there is that doesn\'t love a wall')
+        getattr(logger, level)('When the evening is spread out against the sky')
+        buf.getvalue() ==  'Something there is that doesn\'t love a wall\rWhen the evening is spread out against the sky\n'
 
 
