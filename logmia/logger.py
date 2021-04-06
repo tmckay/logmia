@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from colorama import Fore
+from colorama import Fore, Style
 
 from logmia.sh import Sh
 
@@ -23,12 +23,12 @@ class LogmiaLogger:
 
         self._sh.echo(msg)
 
-    def _non_debug(self, msg):
+    def _non_debug(self, msg, color=Style.NORMAL):
         """Lines will overwite debug, but will be sticky i.e. won't get overwritten."""
         if self._last_log_type == logging.DEBUG:
             self._sh.reset_line()
 
-        self._sh.echo(msg)
+        self._sh.echo(msg, color=color)
 
         self._sh.newline()
 
@@ -41,5 +41,5 @@ class LogmiaLogger:
     def error(self, msg):
         self._non_debug(msg)
 
-    def critical(self, msg, color=Fore.RED):
-        self._non_debug(msg)
+    def critical(self, msg):
+        self._non_debug(msg, color=Fore.RED)

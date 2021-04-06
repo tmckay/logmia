@@ -9,11 +9,11 @@ class Sh:
     removing printed output."""
     def __init__(self, stream=sys.stderr):
         self.stream = stream
-        self.last_line_width = 0
+        self._last_line_width = 0
 
     def echo(self, chars, color=Style.NORMAL):
         self._print(color + chars + Style.RESET_ALL)
-        self.last_line_width = len(chars)
+        self._last_line_width = len(chars)
 
     def _print(self, chars):
         # Print without a trailing newline
@@ -21,7 +21,7 @@ class Sh:
 
     def reset_line(self):
         """Replaces current shell output with spaces, so that the line can be overwritten."""
-        self._print('\r' + ' ' * self.last_line_width + '\r')
+        self._print('\r' + ' ' * self._last_line_width + '\r')
 
     def newline(self):
         print(file=self.stream, flush=True)
