@@ -1,6 +1,8 @@
 import logging
 import sys
 
+from colorama import Fore
+
 from logmia.sh import Sh
 
 
@@ -39,5 +41,5 @@ class LogmiaLogger:
     def error(self, msg):
         self._non_debug(msg)
 
-    def critical(self, msg):
+    def critical(self, msg, color=Fore.RED):
         self._non_debug(msg)

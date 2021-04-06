@@ -1,5 +1,7 @@
 import sys
 
+from colorama import Fore, Style
+
 
 class Sh:
     """Provides a layer on top of normal shell output. This extra
@@ -9,8 +11,8 @@ class Sh:
         self.stream = stream
         self.last_line_width = 0
 
-    def echo(self, chars):
-        self._print(chars)
+    def echo(self, chars, color=Style.NORMAL):
+        self._print(color + chars + Style.RESET_ALL)
         self.last_line_width = len(chars)
 
     def _print(self, chars):
