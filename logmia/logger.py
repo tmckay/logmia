@@ -23,6 +23,8 @@ class LogmiaLogger:
 
         self._sh.echo(msg)
 
+        self._last_log_type = logging.DEBUG
+
     def _non_debug(self, msg, color=Style.NORMAL):
         """Lines will overwite debug, but will be sticky i.e. won't get overwritten."""
         if self._last_log_type == logging.DEBUG:
@@ -35,11 +37,19 @@ class LogmiaLogger:
     def info(self, msg):
         self._non_debug(msg)
 
+        self._last_log_type = logging.INFO
+
     def warn(self, msg):
         self._non_debug(msg)
+
+        self._last_log_type = logging.WARN
 
     def error(self, msg):
         self._non_debug(msg)
 
+        self._last_log_type = logging.ERROR
+
     def critical(self, msg):
         self._non_debug(msg, color=Fore.RED)
+
+        self._last_log_type = logging.CRITICAL

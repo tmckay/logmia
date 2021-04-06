@@ -21,7 +21,9 @@ class Sh:
 
     def reset_line(self):
         """Replaces current shell output with spaces, so that the line can be overwritten."""
-        self._print('\r' + ' ' * self._last_line_width + '\r')
+        self._print('\r')
+        self._print(' ' * self._last_line_width)
+        self._print('\r')
 
     def newline(self):
         print(file=self.stream, flush=True)
