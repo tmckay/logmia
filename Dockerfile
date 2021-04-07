@@ -9,4 +9,4 @@ COPY setup.py ./
 COPY logmia logmia/
 RUN pip3 install .
 
-CMD [ "pytest"]
+CMD [ "pytest", "-vv"]
