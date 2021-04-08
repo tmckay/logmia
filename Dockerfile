@@ -6,7 +6,10 @@ COPY requirements.txt  ./
 RUN pip3 install --requirement requirements.txt
 
 COPY setup.py ./
+COPY mypy.ini ./
 COPY logmia logmia/
 RUN pip3 install .
 
-CMD [ "pytest", "-vv"]
+CMD ["pytest", "-vv"]
+CMD ["mypy", "logmia"]
+CMD ["pylint", "logmia"]
