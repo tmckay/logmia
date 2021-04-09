@@ -4,13 +4,14 @@ Provides log classes. Should use factory function get_logger.
 
 import logging
 import sys
+from typing import IO
 
 from colorama import Fore, Style
 
 from logmia.sh import Sh
 
 
-def get_logger():
+def get_logger() -> 'LogmiaLogger':
     """Factory for instantiating a logger."""
     return LogmiaLogger()
 
@@ -18,11 +19,11 @@ def get_logger():
 class LogmiaLogger:
     """Provides all basic log levels."""
 
-    def __init__(self, stream=sys.stderr):
+    def __init__(self, stream: IO[str] = sys.stderr):
         self._last_log_type = None
         self._sh = Sh(stream=stream)
 
-    def debug(self, msg):
+    def debug(self, msg: str):
         """Successive debug lines overwrite themselves."""
         if self._last_log_type == logging.DEBUG:
             self._sh.reset_line()
@@ -31,7 +32,7 @@ class LogmiaLogger:
 
         self._last_log_type = logging.DEBUG
 
-    def _non_debug(self, msg, color=Style.NORMAL):
+    def _non_debug(self, msg: str, color: str = Style.NORMAL):
         """Lines will overwite debug, but will be sticky i.e. won't get overwritten."""
         if self._last_log_type == logging.DEBUG:
             self._sh.reset_line()
@@ -40,25 +41,25 @@ class LogmiaLogger:
 
         self._sh.newline()
 
-    def info(self, msg):
+    def info(self, msg: str):
         """Replaces debug lines but is sticky."""
         self._non_debug(msg)
 
         self._last_log_type = logging.INFO
 
-    def warn(self, msg):
+    def warn(self, msg: str):
         """Replaces debug lines but is sticky."""
         self._non_debug(msg)
 
         self._last_log_type = logging.WARN
 
-    def error(self, msg):
+    def error(self, msg: str):
         """Replaces debug lines but is sticky."""
         self._non_debug(msg)
 
         self._last_log_type = logging.ERROR
 
-    def critical(self, msg):
+    def critical(self, msg: str):
         """Replaces debug lines but is sticky."""
         self._non_debug(msg, color=Fore.RED)
 

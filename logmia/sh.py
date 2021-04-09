@@ -16,7 +16,7 @@ class Sh:
         self.stream = stream
         self._last_line_width = 0
 
-    def echo(self, chars: str, color: int = Style.NORMAL):
+    def echo(self, chars: str, color: str = Style.NORMAL):
         """Print characters to the shell."""
         self._print(color + chars + Style.RESET_ALL)
         self._last_line_width = len(chars)
