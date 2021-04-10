@@ -14,3 +14,9 @@ def test_reset_line():
     buf = io.StringIO()
     Sh(stream=buf).reset_line()
     assert buf.getvalue() == '\r\r'
+
+
+def test_reset_prev_line():
+    buf = io.StringIO()
+    Sh(stream=buf).reset_prev_line()
+    assert buf.getvalue() == '\033[F\033[F'
