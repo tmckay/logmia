@@ -9,7 +9,3 @@ COPY setup.py ./
 COPY mypy.ini ./
 COPY logmia logmia/
 RUN pip3 install .
-
-CMD ["pytest", "-vv"]
-CMD ["mypy", "logmia"]
-CMD ["pylint", "logmia"]

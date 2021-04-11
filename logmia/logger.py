@@ -20,7 +20,7 @@ class LogmiaLogger:
     """Provides all basic log levels."""
 
     def __init__(self, stream: IO[str] = sys.stderr):
-        self._last_log_type = None
+        self._last_log_type = 0
         self._sh = Sh(stream=stream)
 
     def debug(self, msg: str):
