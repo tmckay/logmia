@@ -14,6 +14,10 @@ Combining less common logging features into a single library.
  + Handlers configured to do the right thing
  + CLI vs. logfile awareness
 
+### Demo
+
+    $ python -m logmia
+
 ### Examples
 
     import logmia
