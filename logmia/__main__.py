@@ -23,6 +23,15 @@ def demo():
     time.sleep(1)
     logger.info('This is an info line and ends our demo')
 
+    logger.info('Fun loading graphic')
+
+    for ii in range(10):
+        for ch in ('|', '/', '-', '\\', '-'):
+            logger.debug(ch)
+            time.sleep(0.1)
+
+    logger.info('The end')
+
 
 if __name__ == '__main__':
     demo()
