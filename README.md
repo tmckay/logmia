@@ -24,8 +24,8 @@ Combining less common logging features into a single library.
 
     logger = logmia.get_logger()
 
-    logger.debug('...')
-    logger.info('...')  # replaces previous debug line and is sticky
+    logger.debug('Attempting to connect to example.com')
+    logger.info('Connected to example.com')  # replaces previous debug line and is sticky
 
 ## Developing
 
