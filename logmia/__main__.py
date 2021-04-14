@@ -25,9 +25,9 @@ def demo():
 
     logger.info('Fun loading graphic')
 
-    for ii in range(10):
-        for ch in ('|', '/', '-', '\\', '-'):
-            logger.debug(ch)
+    for _ in range(10):
+        for char in ('|', '/', '-', '\\', '-'):
+            logger.debug(char)
             time.sleep(0.1)
 
     logger.info('The end')
