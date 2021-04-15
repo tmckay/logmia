@@ -64,3 +64,17 @@ class LogmiaLogger:
         self._non_debug(msg, color=Fore.RED)
 
         self._last_log_type = logging.CRITICAL
+
+
+class LogmiaStreamHandler(logging.StreamHandler):
+    """Makes a log handler compatible with the standard library's logging module."""
+
+    def __init__(self, stream=None):
+        super().__init__(stream)
+        self._sh = Sh(stream)
+
+    def emit(self, record: logging.LogRecord):
+        """Writes record to the stream."""
+
+        msg = self.format(record)
+        self._sh.echo(msg)
